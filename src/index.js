@@ -1,5 +1,6 @@
 const app = require('./app')
+const port= app.get('port');
 
-app.listen(3000,() => {
-    console.log('start listening')
+app.listen(port,() => {
+    console.log(`start listening at http://localhost:${port}`)
 })

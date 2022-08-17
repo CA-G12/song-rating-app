@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "jest",
-    "dev":"nodemon src",
-    "start":"node src"
+    "dev": "nodemon src",
+    "start": "node src"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/CA-G12/song-rating-app#readme",
   "dependencies": {
     "env2": "^2.2.2",
+    "express": "^4.18.1",
     "helmet": "^5.1.1",
     "node-fetch": "^2.6.7"
   },

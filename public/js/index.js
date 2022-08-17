@@ -1,5 +1,104 @@
-// const fetch = require('node-fetch');
+const renderDom = (data) => {
+     document.querySelector('.cards').textContent = ''
+     data.forEach(ele => {
+          const listItem = document.querySelector('li')
 
+
+          const card = document.createElement('div')
+          card.classList.add('card')
+
+          const img = document.createElement('img')
+          img.classList.add('card__image')
+          img.src = ele.result.song_art_image_thumbnail_url 
+          img.alt = ""
+
+          const overlay = document.createElement('div')
+          overlay.classList.add('card__overlay')
+
+          const cardHeader = document.createElement('div')
+          cardHeader.classList.add('card__header')
+
+          const svg = `<svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>`
+
+
+          const thumb = document.createElement('img')
+          thumb.classList.add('card__thumb')
+          thumb.src = ele.result.primary_artist.image_url
+          thumb.alt = ""
+
+          const headerText = document.createElement('div')
+          headerText.classList.add('card__header-text')
+
+
+          const h3 = document.createElement('h3')
+          h3.classList.add('card__title')
+          h3.textContent = ele.result.artist_names
+
+          const span = document.createElement('span')
+          span.classList.add('card__status')
+          span.textContent = ele.result.release_date_for_display
+
+
+          const desc = document.createElement('p')
+          desc.classList.add('card__description')
+
+          const descSpan = document.createElement('span')
+          descSpan.textContent = ele.result.full_title
+
+          const link = document.createElement('a')
+          link.classList.add('go-link')
+          link.target = 'blank'
+          link.href = ele.result.url 
+
+          const icon = document.createElement('i')
+          icon.classList.add('fa-solid','fa-circle-play') 
+
+          link.appendChild(icon)
+
+          desc.appendChild(descSpan)
+          desc.appendChild(link)
+
+
+          headerText.appendChild(h3)
+          headerText.appendChild(span)
+
+          cardHeader.innerHTML += svg 
+          cardHeader.appendChild(thumb)
+          cardHeader.appendChild(headerText)
+
+          overlay.appendChild(cardHeader)
+          overlay.appendChild(desc)
+
+          card.appendChild(img)
+          card.appendChild(overlay)
+
+
+          document.querySelector('.cards').appendChild(card)
+     })
+}
+
+    //      <li>
+//           <div class="card">
+//             <img src="${ele.result.song_art_image_thumbnail_url}" class="card__image" alt="" />
+//             <div class="card__overlay">        
+  //               <div class="card__header">
+  //                 <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>    
+
+  //                 <img class="card__thumb" src="${ele.result.primary_artist.image_url}" alt="" />
+  //                 <div class="card__header-text">
+  //                   <h3 class="card__title">${ele.result.artist_names}</h3>
+  //                   <span class="card__status">${ele.result.release_date_for_display}</span>
+  //                 </div>
+//               </div>
+//               <p class="card__description">
+//                     <span>${ele.result.full_title}</span> 
+//                     <a href = "${ele.result.url}" target = "_blank" class = "go-link"><i class="fa-solid fa-circle-play"></i></a>
+
+//               </p>
+             
+//             </div>
+//           </div>
+//         </li>
 const url = 'https://genius.p.rapidapi.com/search?q=Believer';
 
 
@@ -12,36 +111,7 @@ const options = {
   }
 };
 
-// fetch(url, options)
-// 	.then(res => res.json())
-// 	.then(json =>{
-//     json.response.hits.forEach(ele => {
-//       document.querySelector('.cards').innerHTML += `
-//           <li>
-//           <div class="card">
-//             <img src="${ele.result.song_art_image_thumbnail_url}" class="card__image" alt="" />
-//             <div class="card__overlay">        
-//               <div class="card__header">
-//                 <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
-//                 <img class="card__thumb" src="${ele.result.primary_artist.image_url}" alt="" />
-//                 <div class="card__header-text">
-//                   <h3 class="card__title">${ele.result.artist_names}</h3>
-//                   <span class="card__status">${ele.result.release_date_for_display}</span>
-//                 </div>
-//               </div>
-//               <p class="card__description">
-//                     <span>${ele.result.full_title}</span> 
-//                     <a href = "${ele.result.url}" target = "_blank" class = "go-link"><i class="fa-solid fa-circle-play"></i></a>
 
-//               </p>
-             
-//             </div>
-//           </div>
-//         </li>
-//       `
-//     })
-//   })
-// 	.catch(err => console.error('error:' + err));
 
 
 const input = document.querySelector('.search-input')
@@ -52,35 +122,10 @@ submit.addEventListener('click',(e) => {
   fetch(`/search-song/${input.value}`)
   .then(req => req.json())
   .then(data => {
-    document.querySelector('.cards').textContent = ''
-    data.forEach(ele => {
-      document.querySelector('.cards').innerHTML += `
-      <li>
-      <div class="card">
-        <img src="${ele.result.song_art_image_thumbnail_url}" class="card__image" alt="" />
-        <div class="card__overlay">        
-          <div class="card__header">
-            <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                 
-            <img class="card__thumb" src="${ele.result.primary_artist.image_url}" alt="" />
-            <div class="card__header-text">
-              <h3 class="card__title">${ele.result.artist_names}</h3>
-              <span class="card__status">${ele.result.release_date_for_display}</span>
-            </div>
-          </div>
-          <p class="card__description">
-                <span>${ele.result.full_title}</span> 
-                <a href = "${ele.result.url}" target = "_blank" class = "go-link"><i class="fa-solid fa-circle-play"></i></a>
-    
-          </p>
-         
-        </div>
-      </div>
-    </li>
-    `
-    })
+      renderDom(data)
   })
   .catch(err => {
-    console.log('error')
+    console.log(err)
   })
 })
 

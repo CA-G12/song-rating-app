@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const fetch = require('node-fetch')
-
+require('dotenv').config();
 
 const app = express()
 
@@ -16,7 +16,7 @@ app.get('/search-song/:song',(req,res) => {
         const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '995f6849c8mshc8e9669a26f3716p1c78dejsn7bab16f6344a',
+            'X-RapidAPI-Key': process.env.API_KEY,
             'X-RapidAPI-Host': 'genius.p.rapidapi.com'
         }
         };

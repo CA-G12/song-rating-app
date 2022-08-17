@@ -52,6 +52,7 @@ submit.addEventListener('click',(e) => {
   fetch(`/search-song/${input.value}`)
   .then(req => req.json())
   .then(data => {
+    document.querySelector('.cards').textContent = ''
     data.forEach(ele => {
       document.querySelector('.cards').innerHTML += `
       <li>

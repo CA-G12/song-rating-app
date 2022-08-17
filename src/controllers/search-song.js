@@ -3,7 +3,6 @@ require('dotenv').config();
 
 const path=require('path')
 const searchSong=(req,res) => {
-    console.log(req.params.song)
       const url = `https://genius.p.rapidapi.com/search?q=${req.params.song}`;
 
       const options = {

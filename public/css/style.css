@@ -1,0 +1,254 @@
+/* Fonts */
+
+/* General styles */
+:root{
+    --mainColor : #2E4C6D;
+    --secondaryColor : #2b2b2b ;
+    --surface-color: #fff;
+    --curve: 40;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Noto Sans JP', sans-serif;
+    background-color: var(--mainColor);
+    min-height: 100vh;
+}
+a{
+    color: #fff;
+    text-decoration: none;
+}
+section{
+    margin-top: 30px;
+}
+.section-title{
+    color: #fff;
+    text-align: center;
+}
+
+  /* scroll */
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #c9999927;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(247, 167, 167, 0.452);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+/* Header */
+header{
+    display: flex;
+    justify-content: space-between; 
+    gap: 15px;
+    align-items: center;
+    background-color: var(--mainColor);
+    padding: 1rem 5rem;
+    box-shadow:0px 4px 5px 0  #1a3b5f ;
+}
+
+.search-form{
+    display: flex;
+    gap: 10px;
+    width: 550px; 
+    position: relative;
+    outline: 1px solid #eee;
+}
+
+.auto-complete-input{
+    width: 100%;
+}
+.search-input{
+    width: 100%; 
+    padding: 0.6rem 2rem;
+    font-size: 1rem;
+    border: 0ch;
+    background-color: transparent;
+    color: #808080;
+    color: #ddd;
+}
+.search-input::placeholder{
+    color: #808080;
+}
+
+.search-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee;
+    border: 0;
+    color: #808080;
+    padding: 0 2rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1000;
+    height: 100%;
+}
+
+@media (max-width: 920px) {
+    header .home-title{
+        font-size: 1.5rem;
+    }
+    .search-form{
+        width: 340px 
+    }
+}
+@media (max-width: 655px) {
+    header .home-title{
+        font-size: 2rem;
+    }
+    header {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+@media (max-width: 450px) {
+    header{
+        padding: 1rem 2rem;
+    }
+    .search-form {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .search-input{
+        padding: 0.6rem 1rem;
+    }
+    .search-btn{
+        padding: 0.8rem;
+    }
+    
+}
+
+/* cards */
+
+  
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 400px));
+    justify-content: center;
+    gap: 2rem;
+    margin: 4rem 5vw;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .card {
+    position: relative;
+    display: block;
+    height: 100%;  
+    border-radius: calc(var(--curve) * 1px);
+    overflow: hidden;
+    text-decoration: none;
+  }
+  
+  .card__image {      
+    width: 100%;
+    height: auto;
+  }
+  
+  .card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;      
+    border-radius: calc(var(--curve) * 1px);    
+    background-color: var(--surface-color);      
+    transform: translateY(100%);
+    transition: .2s ease-in-out;
+  }
+  
+  .card:hover .card__overlay {
+    transform: translateY(0);
+  }
+  
+  .card__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    padding: 2em;
+    border-radius: calc(var(--curve) * 1px) 0 0 0;    
+    background-color: var(--surface-color);
+    transform: translateY(-100%);
+    transition: .2s ease-in-out;
+  }
+  
+  .card__arc {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    bottom: 100%;
+    right: 0;      
+    z-index: 1;
+  }
+  
+  .card__arc path {
+    fill: var(--surface-color);
+    d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+  }       
+  
+  .card:hover .card__header {
+    transform: translateY(0);
+  }
+  
+  .card__thumb {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;      
+    border-radius: 50%;      
+  }
+  
+  .card__title {
+    font-size: 1em;
+    margin: 0 0 .3em;
+    color: #6A515E;
+  }
+  
+  .card__tagline {
+    display: block;
+    margin: 1em 0;
+    font-family: "MockFlowFont";  
+    font-size: .8em; 
+    color: #D7BDCA;  
+  }
+  
+  .card__status {
+    font-size: .8em;
+    color: #D7BDCA;
+  }
+  
+  .card__description {
+    padding: 0 2em 2em;
+    margin: 0;
+    color: #D7BDCA;
+    font-family: "MockFlowFont";   
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-align: center;
+  }    
+
+
+  .go-link{
+    color: var(--mainColor);
+    font-size: 1.1rem;
+    margin: auto;
+  }

@@ -1,5 +1,5 @@
 const {serverError,clientError}=require('../controllers')
-const errorRouter=require('express').router();
+const errorRouter=require('express').Router();
 
 errorRouter.use(clientError)
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,22 +11,66 @@
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 </head>
+
 <body>
     <header>
         <h1 class="home-title"><a href="/">Musify</a></h1>
-        <form action="" class="search-form" >
+        <form action="" class="search-form">
             <div class="auto-complete-input">
                 <input type="text" class="search-input" placeholder="Get your song" name="song">
             </div>
             <button type="submit" class="search-btn">
-                <i class="fa-solid fa-magnifying-glass"></i> 
+                <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </form>
     </header>
-    <ul class="cards">
+    <section class="searched">
+        <h2 class="section-title">Suggested Songs</h2>
+        <ul class="cards">
+            <li>
+                <div class="card"><img class="card__image"
+                        src="https://images.genius.com/2b962d986db19923c48221e5be36dd8d.300x300x1.jpg" alt="">
+                    <div class="card__overlay">
+                        <div class="card__header"><svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                                <path></path>
+                            </svg><img class="card__thumb"
+                                src="https://images.genius.com/ec1df125fd46ec3ef56f228df021a8cd.1000x1000x1.jpg" alt="">
+                            <div class="card__header-text">
+                                <h3 class="card__title">Imagine Dragons</h3><span class="card__status">April 27, 2017</span>
+                            </div>
+                        </div>
+                        <p class="card__description"><span>Thunder by&nbsp;Imagine&nbsp;Dragons</span><a class="go-link"
+                                target="blank" href="https://genius.com/Imagine-dragons-thunder-lyrics"><i
+                                    class="fa-solid fa-circle-play"></i></a></p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="card"><img class="card__image"
+                        src="https://images.genius.com/b37edcba4411cfbf44eb664b945ae142.300x300x1.jpg" alt="">
+                    <div class="card__overlay">
+                        <div class="card__header"><svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                                <path></path>
+                            </svg><img class="card__thumb"
+                                src="https://images.genius.com/b2be70d00c71efd8b5e158f8aa6e2f7b.800x800x1.jpg" alt="">
+                            <div class="card__header-text">
+                                <h3 class="card__title">The Longest Johns</h3><span class="card__status">June 19,
+                                    2018</span>
+                            </div>
+                        </div>
+                        <p class="card__description"><span>Wellerman by&nbsp;The&nbsp;Longest Johns</span><a class="go-link"
+                                target="blank" href="https://genius.com/The-longest-johns-wellerman-lyrics"><i
+                                    class="fa-solid fa-circle-play"></i></a></p>
+                    </div>
+                </div>
+            </li>
 
-    </ul>
+        </ul>
+    </section>
+
+  
 
     <script src="./js/index.js"></script>
 </body>
+
 </html>
